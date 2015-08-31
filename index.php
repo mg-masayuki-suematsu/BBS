@@ -13,7 +13,6 @@ if(!$link) {
 	exit;
 }
 
-
 $db_selected = mysql_select_db('test', $link);
 
 if(!$db_selected) {
