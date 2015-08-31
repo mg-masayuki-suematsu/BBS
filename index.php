@@ -1,31 +1,32 @@
 <?php
 
-// ƒf[ƒ^‘}“ü—pSQL‚Ìƒx[ƒX
-// ‚±‚Ìƒx[ƒX‚Évalue•”•ª‚ð•t—^‚·‚é‚¾‚¯‚ÅƒCƒ“ƒT[ƒg‚Å‚«‚é‚æI
-// ’ˆÓI value‚ÍƒJƒbƒR‚ÅˆÍ‚Á‚Ä‚©‚çŒ‹‡‚µ‚Ä‚ËI
+// ï¿½fï¿½[ï¿½^ï¿½}ï¿½ï¿½ï¿½pSQLï¿½Ìƒxï¿½[ï¿½X
+// ï¿½ï¿½ï¿½Ìƒxï¿½[ï¿½Xï¿½ï¿½valueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½^ï¿½ï¿½ï¿½é‚¾ï¿½ï¿½ï¿½ÅƒCï¿½ï¿½ï¿½Tï¿½[ï¿½gï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½I
+// ï¿½ï¿½ï¿½ÓI valueï¿½ÍƒJï¿½bï¿½Rï¿½ÅˆÍ‚ï¿½ï¿½Ä‚ï¿½ï¿½çŒ‹ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ËI
 $insert_thread_sql_base = "insert into sureddo (id, title, text, name) value ";
 $insert_res_sql_base = "insert into res (id, name, text, thread_id) value ";
 
-// DBÚ‘±
+// DBï¿½Ú‘ï¿½
 $link = mysql_connect('localhost', 'root', '');
 if(!$link) {
-	echo "DBÚ‘±ƒGƒ‰[";
+	echo "DBï¿½Ú‘ï¿½ï¿½Gï¿½ï¿½ï¿½[";
 	exit;
 }
+
 
 $db_selected = mysql_select_db('test', $link);
 
 if(!$db_selected) {
-	echo "DB‘I‘ðƒGƒ‰[";
+	echo "DBï¿½Iï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[";
 	exit;
 } 
 
 
 
-// ƒ|ƒXƒg’l‚ÌŽæ“¾
+// ï¿½|ï¿½Xï¿½gï¿½lï¿½ÌŽæ“¾
 $post = !empty($_POST) ? $_POST : "";
 
-// ƒXƒŒƒbƒh‚Ì“Še‚ª‚ ‚Á‚½ê‡‚ÍDB‚Ö‘}“ü
+// ï¿½Xï¿½ï¿½ï¿½bï¿½hï¿½Ì“ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ï¿½DBï¿½Ö‘}ï¿½ï¿½
 if(!empty($post['sureddo'])) {
 	$thread_add_sql = $insert_thread_sql_base."(null, '{$post['title']}', '{$post['text']}', '{$post['name']}')";
 	$thread_add = mysql_query($thread_add_sql);
@@ -34,7 +35,7 @@ if(!empty($post['sureddo'])) {
 	}
 }
 
-// ƒŒƒX‚Ì“Še‚ª‚ ‚Á‚½ê‡‚ÍDB‚Ö‘}“ü
+// ï¿½ï¿½ï¿½Xï¿½Ì“ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ï¿½DBï¿½Ö‘}ï¿½ï¿½
 if(!empty($post['res'])) {
 	$res_add_sql = $insert_res_sql_base."(null, '{$post['name']}', '{$post['text']}', {$post['thread_id']})";
 	$res_add = mysql_query($res_add_sql);
@@ -44,7 +45,7 @@ if(!empty($post['res'])) {
 }
 
 
-// ƒXƒŒƒbƒhŒÄ‚Ño‚µ
+// ï¿½Xï¿½ï¿½ï¿½bï¿½hï¿½Ä‚Ñoï¿½ï¿½
 $thread_arr = mysql_query('select * from `sureddo` order by id desc');
 $res_arr = mysql_query('select * from `res` order by id desc');
 
